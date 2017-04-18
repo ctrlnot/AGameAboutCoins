@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WIN :^)</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.dom.min.js"></script>
+    <!-- <script src="libraries/p5.sound.min.js"></script> -->
+
+    <script src="js/sketch.js"></script>
+    <script src="js/cpuMove.js"></script>
+    <script src="js/coin.js"></script>
+    <script src="js/error.js"></script>
+    <script src="js/functions.js"></script>
+</head>
+<body>
+
+<h3 id="tries"></h3>
+    
+<div id="content"></div>
+
+<div id="intro" class="intro">
+    <h1>Welcome to WIN!</h1>
+    <p>> You will fight this -> ( ͡° ͜ʖ ͡°)</p>
+    <p>> Each turn, the player must grab ANY number of COIN from ONE pile ONLY</p>
+    <p>> CLICK the coin(s) to select</p>
+    <p>> Then press ENTER or SPACEBAR to end your turn</p>
+    <p>> The last player who grabs the coin LOSES ( ͡° ͜ʖ ͡°)</p>
+    <p>> EZPZ ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°)</p>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn-player" onclick="startGame(1)">Seems easy! I'll go first! ( ͡° ͜ʖ ͡°)</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn-player" onclick="startGame(0)">( ͡° ͜ʖ ͡°)</button>
+        </div>
+    </div>
+</div>
+
+<div id="end" class="end">
+    <h2 id="you"></h2>
+    <button id="play-again" class="play-again" onclick="resetGame()"></button>
+</div>
+
+</body>
+</html>
