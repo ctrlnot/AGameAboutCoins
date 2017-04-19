@@ -267,7 +267,7 @@ function resetGame () {
     }
 
     // 7 coins for pile three
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < 7; i++) {
         if (i < 2) {
             pileThree[i] = new Coin(width / 2, height / 2, rad, 3, (width * 0.75 + rad * 3) - (rad * 2 * i), height / 2 - rad * 2.75);
         } else if (i >= 2 && i < 5) {
