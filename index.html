@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WIN :^)</title>
+    <title>A Game About Coins</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.dom.min.js"></script>
@@ -19,7 +20,7 @@
 </head>
 <body>
 
-<h3 id="tries"></h3>
+<h3 id="turns"></h3>
     
 <div id="content"></div>
 
@@ -33,10 +34,10 @@
     <p>> EZPZ ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°)</p>
     <div class="row">
         <div class="col-md-6">
-            <button class="btn-player" onclick="startGame(1)">Seems easy! I'll go first! ( ͡° ͜ʖ ͡°)</button>
+            <button class="btn-player btn-player-you" onclick="startGame(1)">Seems easy! I'll go first! ( ͡° ͜ʖ ͡°)</button>
         </div>
         <div class="col-md-6">
-            <button class="btn-player" onclick="startGame(0)">( ͡° ͜ʖ ͡°)</button>
+            <button class="btn-player btn-player-cpu" onclick="startGame(0)">( ͡° ͜ʖ ͡°)</button>
         </div>
     </div>
 </div>

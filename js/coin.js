@@ -1,6 +1,6 @@
-function Coin (cX, cY, rad, pile) {
+function Coin (cX, cY, rad, pile, iniX, iniY) {
     this.radius = rad;
-    this.col = color(214, 226 , 236); // Fill color
+    this.col = color(44,62,80); // Fill color default
     this.x = Math.floor(cX); // Coin.x
     this.y = Math.floor(cY); // Coin.y
 
@@ -12,17 +12,17 @@ function Coin (cX, cY, rad, pile) {
         var d = dist(mouseX, mouseY, this.x, this.y);
         if (d < this.radius && !this.selected) {
             if (!this.clicked) {
-                this.col = color(247, 250 , 251);
+                this.col = color(6,24,42);
                 this.clicked = true;
             } else {
-                this.col = color(214, 226 , 236);
+                this.col = color(44,62,80);
                 this.clicked = false;
             }
         }
     }
 
     this.reset = function () {
-        this.col = color(214, 226 , 236);
+        this.col = color(44,62,80);
         this.clicked = false;
         this.deleteothers = false;
     }
@@ -31,36 +31,41 @@ function Coin (cX, cY, rad, pile) {
         var limiter = 10;
         var diffX , diffY;
         var targetX, targetY;
-        var centerX = Math.floor(width / 2);
-        var total = arr.length;
-        var middleArr;
 
-        // Go to player pile X-axis
-        if (total % 2 == 0) {
-            middleArr = (total/ 2) - 1;
+        if (!this.pile) {
+            var centerX = Math.floor(width / 2);
+            var total = arr.length;
+            var middleArr;
+            // Go to player pile X-axis
+            if (total % 2 == 0) {
+                middleArr = (total/ 2) - 1;
 
-            if (index <= middleArr) {
-                targetX = Math.floor(centerX - rad - (rad * 2 * (middleArr - index)));
+                if (index <= middleArr) {
+                    targetX = Math.floor(centerX - rad - (rad * 2 * (middleArr - index)));
+                } else {
+                    targetX = Math.floor(centerX + rad + (rad * 2 * (index - middleArr - 1)));
+                }
             } else {
-                targetX = Math.floor(centerX + rad + (rad * 2 * (index - middleArr - 1)));
+                middleArr = Math.ceil(total/ 2) - 1;
+
+                if (index < middleArr) {
+                    targetX = Math.floor(centerX - rad * (2 * (middleArr - index)));
+                } else if (index > middleArr) {
+                    targetX = Math.floor(centerX + rad *  (2 * (index - middleArr)));
+                } else {
+                    targetX = centerX;
+                }
+            }
+
+            // Go to player pile Y-axis
+            if (turn == "player") {
+                targetY = Math.floor(height * 0.88);
+            } else {
+                targetY = Math.floor(height * 0.12);
             }
         } else {
-            middleArr = Math.ceil(total/ 2) - 1;
-
-            if (index < middleArr) {
-                targetX = Math.floor(centerX - rad * (2 * (middleArr - index)));
-            } else if (index > middleArr) {
-                targetX = Math.floor(centerX + rad *  (2 * (index - middleArr)));
-            } else {
-                targetX = centerX;
-            }
-        }
-
-        // Go to player pile Y-axis
-        if (turn == "player") {
-            targetY = Math.floor(height * 0.88);
-        } else {
-            targetY = Math.floor(height * 0.12);
+            targetX = iniX;
+            targetY = iniY;
         }
 
         // Get Y-axis difference

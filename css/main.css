@@ -6,9 +6,8 @@
 }
 
 body {
-    color: #CCC;
-    /*background: #202A34;*/
-    font-family: "Century Gothic", sans-serif;
+    color: #989796;
+    font-family: "Noto sans", "Century Gothic", sans-serif;
 }
 
 canvas {
@@ -31,14 +30,14 @@ canvas {
     z-index: 5;
     display: block;
     width: 50%;
-    padding: 25px; 
-    background: #334354;
+    padding: 25px;
+    background: #FFF;
     box-shadow: 0 0 15px #000;
 }
 
 h1 {
     font-weight: 100;
-    /*color: #51938F;*/
+    color: #5A5957;
     font-size: 36px;
     text-align: center;
     padding-bottom: 15px;
@@ -46,7 +45,7 @@ h1 {
 
 p {
     font-weight: 100;
-    color: #51938F;
+    color: #5A5957;
     font-size: 18px;
     padding-bottom: 15px;
 }
@@ -61,7 +60,16 @@ p {
     padding: 10px;
     
     border: none;
-    background: #51938F;
+}
+
+.btn-player-you {
+    color: #FFF;
+    background: #2980B9;
+}
+
+.btn-player-cpu {
+    color: #FFF;
+    background: #C0392B;
 }
 
 .end {
@@ -74,7 +82,7 @@ p {
 }
 
 h2 {
-    color: #F11642;
+    color: #5A5957;
     font-size: 95px;
     text-align: center;
     padding-bottom: 15px;
@@ -88,29 +96,30 @@ h2 {
     padding-right: 15px;
 
     border: none;
+    color: #FFF;
     font-weight: bold;
     background: #F11642;
 }
 
-.loseCol { color: #F11642; }
-.loseBg { background: #F11642; }
-.winCol { color: #8BF2A5; }
-.winBg { background: #8BF2A5; }
+.loseCol { color: #C0392B; }
+.loseBg { background: #C0392B; }
+.winCol { color: #2980B9; }
+.winBg { background: #2980B9; }
 
-#tries {
+#turns {
     position: absolute;
     top: 2%;
     left: 2%;
     z-index: 5;
-    color: #FFF;
-    font-size: 18px;
+    color: #5A5957;
+    font-size: 22px;
 }
 
-#turn {
+#score-cpu {
     position: absolute;
-    top: 5%;
+    top: 8%;
     left: 2%;
     z-index: 5;
-    color: #FFF;
-    font-size: 18px;
+    color: #5A5957;
+    font-size: 22px;
 }

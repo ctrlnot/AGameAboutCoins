@@ -1,5 +1,9 @@
 var start = false;
+var score = false;
 var tries = 0;
+var playerScore = 0;
+var cpuScore = 0;
+var whoWins = 0;
 
 var currentPile;
 var pileOne = [];
@@ -15,14 +19,18 @@ var turn = -1; // 1 - Player ; 0 - CPU
 var errors = []; // Error messages
 var resetPile = false;
 
+var bg;
+
 function setup () {
     var myCanvas = createCanvas(windowWidth, windowHeight);
+    bg = loadImage('http://i.imgur.com/UmM6w02.png');
     myCanvas.parent('content');
     rad = Math.ceil(width * .025);
 }
 
 function draw () {
-    background(32, 42, 52);
+    // background(32, 42, 52);
+    background(bg);
 
     coinCountPerPile = [pileOne.length, pileTwo.length, pileThree.length];
 
@@ -33,7 +41,8 @@ function draw () {
     // Show and update player's pile
     for (var i = 0; i < pilePlayer.length; i++) {
         if (pilePlayer[i].clicked) pilePlayer[i].reset();
-        pilePlayer[i].col = color(98,226,192);
+        pilePlayer[i].col = color(41,128,185);
+        pilePlayer[i].pile = 0;
         pilePlayer[i].update(i, pilePlayer, "player");
         pilePlayer[i].show();
     }
@@ -41,7 +50,8 @@ function draw () {
     // Show and update cpu's pile
     for (var i = 0; i < pileCPU.length; i++) {
         if (pileCPU[i].clicked) pileCPU[i].reset();
-        pileCPU[i].col = color(225,95,103);
+        pileCPU[i].col = color(192,57,43);
+        pileCPU[i].pile = 0;
         pileCPU[i].update(i, pileCPU, "cpu");
         pileCPU[i].show();
     }
@@ -53,8 +63,7 @@ function draw () {
         if (errors[i].alpha < 0) errors.splice(i, 1);
     }
 
-    document.getElementById('tries').innerHTML = "Suffered: " + tries + " time(s)";
-    
+    document.getElementById('turns').innerHTML = "Suffered: " + tries + " time(s)";
 
     gameState();
 }
@@ -204,7 +213,6 @@ function mousePressed () {
 }
 
 function gameState () {
-    // console.log(turn);
     if (start) {
         if (turn) {
             if (totalPiles() <= 0) {
@@ -246,26 +254,26 @@ function resetGame () {
 
     // 3 coins for pile one
     for (var i = 0; i < 3; i++) {
-        pileOne[i] = new Coin((width * 0.25) - (rad * 2 * i), height / 2 - rad, rad, 1);
+        pileOne[i] = new Coin(width / 2, height / 2, rad, 1, (width * 0.25) - (rad * 2 * i), height / 2 - rad);
     }
 
     // 5 coins for pile two
     for (var i = 0; i < 5; i++) {
         if (i < 3) {
-            pileTwo[i] = new Coin((width * 0.5 + rad * 2) - (rad * 2 * i), height / 2 - rad * 2, rad, 2);
+            pileTwo[i] = new Coin(width / 2, height / 2, rad, 2, (width * 0.5 + rad * 2) - (rad * 2 * i), height / 2 - rad * 2);
         } else {
-            pileTwo[i] = new Coin((width * 0.5 + rad * 7) - (rad * 2 * i), height / 2 - rad * 0.25, rad, 2);
+            pileTwo[i] = new Coin(width / 2, height / 2, rad, 2, (width * 0.5 + rad * 7) - (rad * 2 * i), height / 2 - rad * 0.25);
         }
     }
 
     // 7 coins for pile three
     for (var i = 0; i < 7; i++) {
         if (i < 2) {
-            pileThree[i] = new Coin((width * 0.75 + rad * 3) - (rad * 2 * i), height / 2 - rad * 2.75, rad, 3);
+            pileThree[i] = new Coin(width / 2, height / 2, rad, 3, (width * 0.75 + rad * 3) - (rad * 2 * i), height / 2 - rad * 2.75);
         } else if (i >= 2 && i < 5) {
-            pileThree[i] = new Coin((width * 0.75 + rad * 8) - (rad * 2 * i), height / 2 - rad, rad, 3);
+            pileThree[i] = new Coin(width / 2, height / 2, rad, 3, (width * 0.75 + rad * 8) - (rad * 2 * i), height / 2 - rad);
         } else {
-            pileThree[i] = new Coin((width * 0.75 + rad * 13) - (rad * 2 * i), height / 2 + rad * 0.75, rad, 3);
+            pileThree[i] = new Coin(width / 2, height / 2, rad, 3, (width * 0.75 + rad * 13) - (rad * 2 * i), height / 2 + rad * 0.75);
         }
     }
 

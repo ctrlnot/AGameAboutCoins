@@ -4,6 +4,7 @@ function windowResized () {
 
 function showPiles (arr) {
     for (var i = 0; i < arr.length; i++) {
+        arr[i].update();
         arr[i].show();
     }
 }
@@ -30,17 +31,17 @@ function getRandomNum (min, max, avoid) {
     return res == avoid ? getRandomNum(min, max, avoid) : res;
 }
 
+function keyPressed () {
+    if (keyCode === RETURN || key === ' ' || keyCode === ENTER) {
+        endTurn();
+    }
+}
+
 function startGame (who) {
     if (!start) {
         start = true;
         turn = who;
         document.getElementById('intro').style.display = 'none';
         tries++;
-    }
-}
-
-function keyPressed () {
-    if (keyCode === RETURN || key === ' ' || keyCode === ENTER) {
-        endTurn();
     }
 }
